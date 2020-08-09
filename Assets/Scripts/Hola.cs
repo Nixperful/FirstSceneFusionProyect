@@ -22,13 +22,13 @@ public class Hola : MonoBehaviour
          // is the controller on the ground?
          if (controller.isGrounded) {
              //Feed moveDirection with input.
-             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+             moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 );
              moveDirection = transform.TransformDirection(moveDirection);
              //Multiply it by speed.
              moveDirection *= speed;
              //Jumping
              if (Input.GetButton("Jump"))
-                 moveDirection.y = jumpSpeed;
+                 moveDirection.y = jumpSpeed +10;
              
          }
          //Applying gravity to the controller
