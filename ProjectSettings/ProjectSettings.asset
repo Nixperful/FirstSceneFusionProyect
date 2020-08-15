@@ -578,7 +578,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: SCENE_FUSION
+    1: SCENE_FUSION;SF_CINEMACHINE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

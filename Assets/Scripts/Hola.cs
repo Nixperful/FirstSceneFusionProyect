@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Hola : MonoBehaviour
-{
-    
-    private CharacterController controller;
+{        
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    CharacterController controller;
+    
     // Start is called before the first frame update
     void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        
+        controller=gameObject.GetComponent<CharacterController>();        
+        if (!controller){
+            controller = gameObject.AddComponent<CharacterController>();
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {           
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -31,7 +35,7 @@ public class Hola : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            gameObject.transform.forward = move;           
         }
 
         // Changes the height position of the player..
@@ -39,7 +43,8 @@ public class Hola : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-
+        //Vector3 rotation=gameObject.transform.eulerAngles;
+        //gameObject.transform.Rotate(rotation.x+20.0f, rotation.y, rotation.z);
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
